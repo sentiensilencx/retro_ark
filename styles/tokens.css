@@ -1,0 +1,162 @@
+/* ============================================================
+   ark — design tokens
+   Every colour, size, and timing lives here.
+   This is the one file to edit when the palette changes.
+
+   90s CRT direction: phosphor palettes, near-square geometry, hard
+   offset shadows with no blur, monospace everywhere. The screen
+   itself is drawn by crt.css.
+   ============================================================ */
+
+:root {
+  color-scheme: dark;
+
+  /* ---- surfaces — warm dusk, not terminal green ---- */
+  --bg:             #17110f;
+  --bg-sunken:      #120d0c;
+  --surface:        #1e1714;
+  --surface-raised: #251d19;
+  --surface-hover:  #2f2521;
+  --surface-active: #382c27;
+
+  /* the plastic shell around the tube */
+  --shell:          #241b18;
+
+  /* ---- lines — warm, low-contrast, never cold grey ---- */
+  --line:        rgb(255 214 190 / 10%);
+  --line-strong: rgb(255 214 190 / 22%);
+  --line-faint:  rgb(255 214 190 / 5%);
+
+  /* ---- ink — warm cream, softer than pure white ---- */
+  --ink:        #f6e7d8;
+  --ink-dim:    #c4a892;
+  --ink-faint:  #ab917b;   /* solved for 4.5:1 on --surface (was #9c8069, 3.66) */
+  --ink-invert: #1a1210;
+
+  /* ---- accent — dusty rose, the lo-fi colour ---- */
+  --accent:      #e8809b;
+  --accent-wash: rgb(232 128 155 / 16%);
+  --accent-edge: rgb(232 128 155 / 52%);
+  --accent-ink:  #1a1210;
+
+  /* ---- folder colours — warm-leaning, softly saturated ---- */
+  --pink:   #f090b0;
+  --red:    #e8756a;
+
+  /* destructive — darker than --red so white text on it still reads */
+  --danger: #c85a50;
+  --blue:   #8aa8d8;
+  --violet: #b295d8;
+  --amber:  #e8b06a;
+  --mint:   #8ec49a;
+  --teal:   #74bdb4;
+  --orange: #e89a62;
+
+  /* ---- status ---- */
+  --danger:  #f08078;
+  --warning: #e8b06a;
+  --ok:      #8ec49a;
+
+  /* ---- type — monospace all the way down, like real software ---- */
+  --font:      ui-monospace, "DejaVu Sans Mono", "Liberation Mono", Menlo,
+               Consolas, "Courier New", monospace;
+  --font-mono: ui-monospace, "DejaVu Sans Mono", "Liberation Mono", Menlo,
+               Consolas, "Courier New", monospace;
+
+  --text-xs:  0.6875rem;
+  --text-sm:  0.78125rem;
+  --text-md:  0.8125rem;
+  --text-lg:  0.9375rem;
+  --text-xl:  1.125rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 2.25rem;
+
+  /* wider tracking — bitmap-era type was spaced out, not snug */
+  --track:     0.02em;
+  --track-wide: 0.08em;
+
+  --leading-tight: 1.15;
+  --leading:       1.45;
+
+  --w-normal:   400;
+  --w-medium:   500;
+  --w-semibold: 600;
+
+  /* ---- space — 4px scale ---- */
+  --s-1:  4px;
+  --s-2:  8px;
+  --s-3:  12px;
+  --s-4:  16px;
+  --s-5:  20px;
+  --s-6:  24px;
+  --s-8:  32px;
+  --s-10: 40px;
+  --s-12: 48px;
+  --s-16: 64px;
+  --s-20: 80px;
+
+  /* ---- shape — nearly square. Windows 95 territory ---- */
+  --r-sm:   0px;
+  --r-md:   2px;
+  --r-lg:   3px;
+  --r-xl:   4px;
+  --r-full: 999px;
+
+  /* ---- elevation — hard offset, zero blur. No soft glow ---- */
+  --shadow-sm: 1px 1px 0 rgb(0 0 0 / 70%);
+  --shadow-md: 2px 2px 0 rgb(0 0 0 / 75%);
+  --shadow-lg: 4px 4px 0 rgb(0 0 0 / 80%);
+
+  /* ---- motion — snappier than modern easing, no bounce ---- */
+  --ease:     steps(4, end);
+  --ease-out: steps(3, end);
+  --dur-fast: 60ms;
+  --dur:      100ms;
+  --dur-slow: 180ms;
+  --stagger:  45ms;
+
+  /* ---- layout ---- */
+  --sidebar-w:   248px;
+  --topbar-h:    54px;
+  --content-max: 760px;
+  --avatar-size: 30px;
+
+  /* ---- pomodoro ring ---- */
+  --ring-size:   232px;
+  --ring-stroke: 6px;
+  --ring-track:  rgb(255 214 190 / 10%);
+
+  /* ---- the warm bloom pooled behind the content ---- */
+  --lamp: rgb(232 128 155 / 9%);
+
+  /* ---- 90s bevels: light edge top-left, dark edge bottom-right ---- */
+  --btn-edge:   rgb(0 0 0 / 70%);
+  --bevel-light: rgb(255 226 200 / 18%);
+
+  /* ============================================================
+     CRT — consumed by crt.css
+     ============================================================ */
+
+  /* one dark line every 3px, kept faint so text stays legible */
+  --scan-size:   3px;
+  --scan-dark:   0.42;
+
+  /* aperture grille: vertical RGB triads across the tube */
+  --grille:      0.05;
+  --grille-size: 3px;
+
+  /* the glass: darkening at the edges, like a curved tube */
+  --vignette:    0.45;
+
+  /* how far the beam bleeds past a lit pixel — soft, not neon */
+  --glow-sm:     3px;
+  --glow-md:     5px;
+  --glow-color:  rgb(232 128 155 / 45%);
+
+  /* the slow mains hum — a real CRT never sat perfectly still */
+  --flicker-ms:  3200ms;
+  --flicker:     0.018;
+
+  /* the plastic bezel the tube is set into */
+  --bezel:       rgb(0 0 0 / 55%);
+}

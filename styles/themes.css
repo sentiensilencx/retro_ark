@@ -1,0 +1,233 @@
+/* ============================================================
+   ark — themes
+   tokens.css holds the base (dusk — the warm default). Everything
+   below overrides it. Adding a theme = one block here + one line
+   in scripts/app.js THEMES + one swatch in index.html.
+   tools/check.py enforces that all three stay in step.
+
+   Dusk and amber are the warm ones: dusty rose and amber tube.
+   The rest exist so the palette isn't a one-note affair, but
+   dusk is the default because it's the one that fits lo-fi.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   dusk — the default. warm, low-contrast, tape-worn.
+   ------------------------------------------------------------ */
+
+/* ------------------------------------------------------------
+   amber — a warm P3 tube, dusk with the saturation turned up
+   ------------------------------------------------------------ */
+[data-theme="amber"] {
+  color-scheme: dark;
+
+  --bg:             #17100a;
+  --bg-sunken:      #120c07;
+  --surface:        #1f1710;
+  --surface-raised: #271e15;
+  --surface-hover:  #32271c;
+  --surface-active: #3c3023;
+
+  --shell:          #291f19;
+
+  --line:        rgb(255 205 140 / 11%);
+  --line-strong: rgb(255 205 140 / 24%);
+  --line-faint:  rgb(255 205 140 / 6%);
+
+  --ink:        #f7e3c8;
+  --ink-dim:    #cba982;
+  --ink-faint:  #b09572;   /* solved for 4.5:1 on --surface (was #a68a66, 3.93) */
+  --ink-invert: #1a120a;
+
+  --accent:      #f0a850;
+  --accent-wash: rgb(240 168 80 / 16%);
+  --accent-edge: rgb(240 168 80 / 52%);
+  --accent-ink:  #1a120a;
+
+  --pink:   #f090b0;
+  --red:    #e8756a;
+  --blue:   #8aa8d8;
+  --violet: #b295d8;
+  --amber:  #f0b060;
+  --mint:   #8ec49a;
+  --teal:   #74bdb4;
+  --orange: #e89a62;
+
+  --danger:  #f08078;
+  --warning: #f0b060;
+  --ok:      #8ec49a;
+
+  --ring-track: rgb(255 205 140 / 10%);
+  --lamp:       rgb(240 168 80 / 9%);
+  --btn-edge:   rgb(0 0 0 / 70%);
+  --bevel-light: rgb(255 226 190 / 18%);
+  --glow-color: rgb(240 168 80 / 45%);
+
+  /* a warmer tube flickers a touch less than a cold one */
+  --scan-dark: 0.36;
+}
+
+/* ------------------------------------------------------------
+   sage — muted green, the same warmth as dusk but cooler in hue.
+   For long sessions where the rose starts feeling sweet.
+   ------------------------------------------------------------ */
+[data-theme="sage"] {
+  color-scheme: dark;
+
+  --bg:             #12150f;
+  --bg-sunken:      #0d100b;
+  --surface:        #191d16;
+  --surface-raised: #20251c;
+  --surface-hover:  #293023;
+  --surface-active: #323a2b;
+
+  --shell:          #232a20;
+
+  --line:        rgb(214 232 200 / 10%);
+  --line-strong: rgb(214 232 200 / 22%);
+  --line-faint:  rgb(214 232 200 / 5%);
+
+  --ink:        #e6ecdc;
+  --ink-dim:    #b3bfa2;
+  --ink-faint:  #98a488;   /* solved for 4.5:1 on --surface (was #8b9779, 3.83) */
+  --ink-invert: #151a12;
+
+  --accent:      #a8c47a;
+  --accent-wash: rgb(168 196 122 / 16%);
+  --accent-edge: rgb(168 196 122 / 52%);
+  --accent-ink:  #151a12;
+
+  --pink:   #e898b4;
+  --red:    #e8756a;
+  --blue:   #8aa8d8;
+  --violet: #b295d8;
+  --amber:  #e0b878;
+  --mint:   #a8c47a;
+  --teal:   #7cc0b4;
+  --orange: #dc9c6a;
+
+  --danger:  #f08078;
+  --warning: #e0b878;
+  --ok:      #a8c47a;
+
+  --ring-track: rgb(214 232 200 / 10%);
+  --lamp:       rgb(168 196 122 / 8%);
+  --btn-edge:   rgb(0 0 0 / 70%);
+  --bevel-light: rgb(226 240 214 / 16%);
+  --glow-color: rgb(168 196 122 / 42%);
+}
+
+/* ------------------------------------------------------------
+   plum — warm and low-lit. The late-evening one.
+   ------------------------------------------------------------ */
+[data-theme="plum"] {
+  color-scheme: dark;
+
+  --bg:             #150f18;
+  --bg-sunken:      #100b13;
+  --surface:        #1d1622;
+  --surface-raised: #251c2b;
+  --surface-hover:  #2e2434;
+  --surface-active: #372c3e;
+
+  --shell:          #281d2d;
+
+  --line:        rgb(226 200 240 / 10%);
+  --line-strong: rgb(226 200 240 / 22%);
+  --line-faint:  rgb(226 200 240 / 5%);
+
+  --ink:        #ecdfee;
+  --ink-dim:    #bda6c9;
+  --ink-faint:  #a490ae;   /* solved for 4.5:1 on --surface (was #9580a1, 3.69) */
+  --ink-invert: #171020;
+
+  --accent:      #c48ad8;
+  --accent-wash: rgb(196 138 216 / 16%);
+  --accent-edge: rgb(196 138 216 / 52%);
+  --accent-ink:  #171020;
+
+  --pink:   #f090b0;
+  --red:    #e8756a;
+  --blue:   #8aa8d8;
+  --violet: #c48ad8;
+  --amber:  #e0b878;
+  --mint:   #8ec49a;
+  --teal:   #7cc0b4;
+  --orange: #dc9c6a;
+
+  --danger:  #f08078;
+  --warning: #e0b878;
+  --ok:      #8ec49a;
+
+  --ring-track: rgb(226 200 240 / 10%);
+  --lamp:       rgb(196 138 216 / 8%);
+  --btn-edge:   rgb(0 0 0 / 70%);
+  --bevel-light: rgb(238 222 246 / 16%);
+  --glow-color: rgb(196 138 216 / 42%);
+}
+
+/* ------------------------------------------------------------
+   paper — a light 90s LCD panel rather than a tube. Warm bone,
+   not clinical white.
+   ------------------------------------------------------------ */
+[data-theme="paper"] {
+  color-scheme: light;
+
+  --bg:             #ddd5c6;
+  --bg-sunken:      #cec5b4;
+  --surface:        #ece5d8;
+  --surface-raised: #f5efe4;
+  --surface-hover:  #fdf9f1;
+  --surface-active: #fffdf7;
+
+  --shell:          #c9bfab;
+
+  --line:        rgb(48 40 30 / 14%);
+  --line-strong: rgb(48 40 30 / 30%);
+  --line-faint:  rgb(48 40 30 / 8%);
+
+  --ink:        #241f18;
+  --ink-dim:    #52493c;
+  --ink-faint:  #5a5244;   /* solved for 4.5:1 on --surface (was #776d5c, 2.97) */
+  --ink-invert: #f5efe4;
+
+  --accent:      #a83a5c;
+  --accent-wash: rgb(168 58 92 / 12%);
+  --accent-edge: rgb(168 58 92 / 55%);
+  --accent-ink:  #fdf9f1;
+
+  --pink:   #b04a78;
+  --red:    #a83a34;
+  --blue:   #3a5c92;
+  --violet: #6a45a0;
+  --amber:  #8a6410;
+  --mint:   #4a7a52;
+  --teal:   #2a6a64;
+  --orange: #9a5824;
+
+  --danger:  #a83a34;
+  --warning: #8a6410;
+  --ok:      #4a7a52;
+
+  --ring-track: rgb(48 40 30 / 14%);
+  --lamp:       rgb(168 58 92 / 6%);
+  --btn-edge:   rgb(48 40 30 / 28%);
+  --bevel-light: rgb(255 252 245 / 85%);
+
+  /* a lit LCD still blooms, but far less than a tube */
+  --glow-sm:    2px;
+  --glow-md:    3px;
+  --glow-color: rgb(168 58 92 / 20%);
+  --scan-dark:  0.10;
+  --grille:     0;
+  --vignette:   0.12;
+}
+
+/* ------------------------------------------------------------
+   every dark theme needs the focus ring named explicitly: on a
+   near-black screen the default outline washes out.
+   ------------------------------------------------------------ */
+[data-theme="amber"] :focus-visible,
+[data-theme="sage"] :focus-visible,
+[data-theme="plum"] :focus-visible {
+  outline-color: var(--accent);
+}

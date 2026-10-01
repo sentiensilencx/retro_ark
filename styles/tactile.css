@@ -1,0 +1,119 @@
+/* ============================================================
+   ark — tactile / retro layer
+   The analog, press-it-and-feel-it pass. Entirely optional:
+   delete the <link> in index.html to drop the whole thing.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. bevels
+
+   Every pressable surface gets a light edge top-left and a dark
+   one bottom-right — the Windows 95 / System 7 convention. The
+   pressed state inverts it, which is what sells "physical key"
+   more than any amount of movement.
+   ------------------------------------------------------------ */
+.btn,
+.nav-item,
+.chip,
+.icon-btn,
+.urgency-pick,
+.noise-card,
+.folder-card-open,
+.theme-swatch {
+  border: 1px solid var(--line-strong);
+  box-shadow:
+    inset 1px 1px 0 var(--bevel-light),
+    inset -1px -1px 0 var(--btn-edge),
+    1px 1px 0 var(--btn-edge);
+}
+
+.btn:hover,
+.nav-item:hover,
+.icon-btn:hover,
+.urgency-pick:hover,
+.noise-card:hover:not(:disabled) {
+  border-color: var(--accent-edge);
+}
+
+.btn:active,
+.nav-item:active,
+.icon-btn:active,
+.noise-card:active:not(:disabled) {
+  /* inverted bevel + the key visibly travels down and right */
+  box-shadow:
+    inset 1px 1px 0 var(--btn-edge),
+    inset -1px -1px 0 var(--bevel-light);
+  transform: translate(1px, 1px);
+}
+
+/* ghost buttons carry no chrome, so they get no bevel either */
+.btn-ghost,
+.btn-ghost:hover,
+.btn-ghost:active {
+  border-color: transparent;
+  box-shadow: none;
+  transform: none;
+}
+.btn-ghost:hover { background: var(--surface-hover); }
+
+/* ------------------------------------------------------------
+   2. pressed-inset surfaces
+
+   Cards and panels read as plates sitting on the screen, while
+   inputs and wells sink into it — the same logic the original
+   layer had, just with hard edges instead of soft ones.
+   ------------------------------------------------------------ */
+.card,
+.panel,
+.theme-swatch {
+  border: 1px solid var(--line-strong);
+  box-shadow:
+    inset 1px 1px 0 var(--bevel-light),
+    2px 2px 0 var(--btn-edge);
+}
+
+/* wells sink into the screen: dark inset, light lip along the top */
+.input,
+.palette-input,
+.pomo-edit {
+  border: 1px solid var(--line-strong);
+  box-shadow:
+    inset 1px 2px 0 rgb(0 0 0 / 45%),
+    inset -1px -1px 0 var(--bevel-light);
+  border-radius: var(--r-sm);
+}
+
+/* ------------------------------------------------------------
+   3. instrument labelling — small technical type, and labels
+   read like equipment silkscreen
+   ------------------------------------------------------------ */
+.group-head > span,
+.nav-count,
+.chip,
+.palette-group,
+.pomo-phase {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.group-head > span,
+.pomo-phase,
+.ctx-heading,
+.field-label,
+.palette-group {
+  text-transform: uppercase;
+  letter-spacing: var(--track-wide);
+}
+
+kbd:active {
+  box-shadow: inset 1px 1px 0 var(--btn-edge);
+  transform: translate(1px, 1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn:active,
+  .nav-item:active,
+  .icon-btn:active,
+  .noise-card:active:not(:disabled),
+  kbd:active { transform: none; }
+}

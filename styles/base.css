@@ -1,0 +1,131 @@
+/* ============================================================
+   ark — reset + base elements
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body, #app { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: var(--text-md);
+  font-weight: var(--w-normal);
+  line-height: var(--leading);
+  letter-spacing: var(--track);
+  color: var(--ink);
+  /* The plastic shell the tube is set into. Driven by tokens so a light
+     theme doesn't leave a dark brown page behind a light app — and
+     slightly lighter than --bg so the bezel has something to read
+     against. */
+  background: var(--shell);
+  overscroll-behavior: none;
+}
+
+/* An unsmoothed CRT glows unevenly. Disabling smoothing is the most
+   authentic thing available here — only the large sizes take it,
+   since thin body copy turns to mush without it. (font-smooth is a
+   non-standard no-op in every shipping browser; kept as a comment-free
+   progressive hint, not relied upon.) */
+h1, h2, h3, .pomo-time, .brand-name {
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 { font-weight: var(--w-medium); line-height: var(--leading-tight); }
+h1 { font-size: var(--text-2xl); letter-spacing: var(--track); }
+h2 { font-size: var(--text-xl);  letter-spacing: var(--track-wide); text-transform: uppercase; }
+h3 { font-size: var(--text-lg);  letter-spacing: var(--track); }
+
+p { margin: 0; }
+
+a { color: inherit; text-decoration: none; }
+
+button, input, textarea, select {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+}
+button { cursor: pointer; }
+
+ul, ol { list-style: none; padding: 0; margin: 0; }
+
+img, svg { display: block; max-width: 100%; }
+
+code, kbd, pre, samp { font-family: var(--font-mono); }
+
+/* A 90s keycap: two-tone bevel, no radius, hard drop */
+kbd {
+  font-size: var(--text-xs);
+  line-height: 1;
+  padding: 3px 6px;
+  color: var(--ink-dim);
+  background: var(--surface-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  box-shadow:
+    inset 1px 1px 0 var(--bevel-light),
+    1px 1px 0 var(--btn-edge);
+  white-space: nowrap;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: var(--s-4) 0;
+}
+
+/* ---- focus: visible, calm, never removed ---- */
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid var(--accent-edge);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+/* ---- scrollbars: chunky, square, unmistakably 90s ---- */
+* { scrollbar-width: auto; scrollbar-color: var(--surface-active) var(--bg-sunken); }
+::-webkit-scrollbar { width: 16px; height: 16px; }
+::-webkit-scrollbar-track {
+  background: var(--bg-sunken);
+  border-left: 1px solid var(--line-faint);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-active);
+  border: 2px solid var(--bg-sunken);
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--ink-faint); }
+::-webkit-scrollbar-corner { background: var(--bg-sunken); }
+
+/* ---- helpers ---- */
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.dim  { color: var(--ink-dim); }
+.faint { color: var(--ink-faint); }
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+[hidden] { display: none !important; }
+
+/* ---- reduced motion: honour the system ---- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

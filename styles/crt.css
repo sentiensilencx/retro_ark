@@ -1,0 +1,166 @@
+/* ============================================================
+   ark — CRT layer
+   The screen the whole app lives inside: scanlines, aperture
+   grille, phosphor bloom, glass vignette, mains flicker, and a
+   plastic bezel.
+
+   Everything here is pointer-transparent. If a rule in this file
+   ever blocks a click, the app dies silently — which is exactly
+   the bug that cost us an afternoon once. Every decorative
+   pseudo-element sets `pointer-events: none` and is verified by
+   tools/check.py.
+
+   Delete the <link> in index.html to drop the whole layer and
+   fall back to plain phosphor flat-design.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. the tube — a rounded, recessed screen in a plastic shell
+   ------------------------------------------------------------ */
+.app {
+  position: relative;
+  isolation: isolate;      /* own stacking context, see layout.css note */
+}
+
+/* Bezel: an inset shadow all round, so the content looks pressed
+   into a shell rather than floating on the page. */
+.app::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  border-radius: 18px;
+  box-shadow:
+    inset 0 0 0 2px var(--bevel-light),
+    inset 0 0 0 10px var(--bezel),
+    inset 0 0 60px rgb(0 0 0 / 45%);
+}
+
+/* ------------------------------------------------------------
+   2. scanlines + aperture grille + vignette, in one element
+
+   Three background layers on a single fixed overlay is cheaper
+   than three elements, and they can't fight over z-index.
+   ------------------------------------------------------------ */
+.crt-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 39;
+  pointer-events: none;
+  border-radius: 16px;
+
+  /* scanlines: one dark line per --scan-size, on the 3px grid */
+  background-image:
+    /* glass vignette — corners fall off, like a curved tube */
+    radial-gradient(ellipse 120% 100% at 50% 50%,
+      transparent 42%,
+      rgb(0 0 0 / calc(var(--vignette) * 0.45)) 78%,
+      rgb(0 0 0 / var(--vignette)) 100%),
+    /* aperture grille — vertical RGB triads across the tube */
+    repeating-linear-gradient(90deg,
+      rgb(255 0 0 / var(--grille)) 0 1px,
+      rgb(0 255 0 / var(--grille)) 1px 2px,
+      rgb(0 0 255 / var(--grille)) 2px var(--grille-size)),
+    /* scanlines */
+    repeating-linear-gradient(0deg,
+      rgb(0 0 0 / var(--scan-dark)) 0 1px,
+      transparent 1px var(--scan-size));
+
+  /* Promote to its own compositor layer. Without this the flicker
+     below repaints the whole gradient stack every frame, which is the
+     single most expensive thing on the page. */
+  will-change: opacity;
+  transform: translateZ(0);
+
+  /* mains hum: a real CRT never sits perfectly still */
+  animation: crt-flicker var(--flicker-ms) steps(2, end) infinite;
+}
+
+/* The hum itself — barely there, and off entirely for anyone who
+   asked for reduced motion. Two steps only, because a smooth
+   opacity fade reads as a video transition, not as hardware. */
+@keyframes crt-flicker {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: calc(1 - var(--flicker)); }
+}
+
+/* ------------------------------------------------------------
+   3. phosphor bloom
+
+   Text on a tube lights the phosphor around itself. This is the
+   single biggest "is that a CRT" cue, and it has to stay subtle
+   or body copy turns to mush.
+   ------------------------------------------------------------ */
+.app :where(h1, h2, h3, .nav-label, .task-title, .pomo-time, .brand-name) {
+  text-shadow: 0 0 var(--glow-sm) var(--glow-color);
+}
+
+/* Anything already-hot gets the wider bloom: the accent-coloured
+   controls and the pomodoro readout. */
+.app :where(.btn-primary, .noise-card.is-playing, .nav-item.is-active) {
+  text-shadow: 0 0 var(--glow-md) var(--glow-color);
+}
+
+/* The ring is literal emissive light — let it bleed. */
+.ring-fill {
+  filter: drop-shadow(0 0 6px var(--glow-color))
+          drop-shadow(0 0 14px var(--glow-color));
+}
+
+/* Urgency dots read as lit indicators, not flat paint. */
+.urgency-dot,
+.dot {
+  box-shadow: 0 0 var(--glow-sm) currentColor;
+}
+
+/* ------------------------------------------------------------
+   4. roll bar
+
+   A slow bright band drifting down the tube, the way an untuned
+   CRT loses sync. Position-fixed and very low contrast: you
+   notice it if you stare, and forget it otherwise.
+   ------------------------------------------------------------ */
+.crt-roll {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 22vh;
+  z-index: 38;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgb(255 255 255 / 2.2%) 45%,
+    rgb(255 255 255 / 3.4%) 50%,
+    rgb(255 255 255 / 2.2%) 55%,
+    transparent 100%);
+  /* own layer, or every frame of the drift repaints the page behind it */
+  will-change: transform;
+  transform: translateZ(0);
+  animation: crt-roll 11s linear infinite;
+}
+
+@keyframes crt-roll {
+  from { transform: translateY(-30vh); }
+  to   { transform: translateY(130vh); }
+}
+
+/* ------------------------------------------------------------
+   5. reduced motion
+
+   Flicker and roll bar are the two effects here that can
+   actually bother someone, so they go first. The static
+   scanlines stay — they don't move, so they're just texture.
+   ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  .crt-screen { animation: none; }
+  .crt-roll   { display: none; }
+
+  /* motion.css kills the rise animations; the bloom is a shadow,
+     not a transform, so it survives and stays put */
+  .app :where(h1, h2, h3, .nav-label, .task-title, .pomo-time, .brand-name),
+  .app :where(.btn-primary, .noise-card.is-playing, .nav-item.is-active) {
+    text-shadow: none;
+  }
+}
