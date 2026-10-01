@@ -1,0 +1,213 @@
+/* ============================================================
+   ark — themes
+   tokens.css holds the base (ember, the default). Everything
+   below overrides it. Adding a theme = add one block + one
+   entry in scripts/app.js THEMES.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   peach — the palette from the first arK
+   ------------------------------------------------------------ */
+[data-theme="peach"] {
+  color-scheme: light;
+
+  --bg:             #ffdcc9;
+  --bg-sunken:      #ffd4c1;
+  --surface:        #fffaf5;
+  --surface-raised: #fff6ef;
+  --surface-hover:  #ffefe5;
+  --surface-active: #ffe8db;
+
+  --line:        rgb(93 64 55 / 9%);
+  --line-strong: rgb(93 64 55 / 18%);
+  --line-faint:  rgb(93 64 55 / 5%);
+
+  --ink:        #5d4037;
+  --ink-dim:    #7c5a4e;   /* was #8a6559 — 3.78:1 on --bg */
+  --ink-faint:  #785b51;   /* was #b39689 — 2.02:1, unreadable */
+  --ink-invert: #fffaf5;
+
+  --accent:      #f5a0a0;
+  --accent-wash: rgb(245 160 160 / 30%);
+  --accent-edge: rgb(245 160 160 / 90%);
+  --accent-ink:  #4e2f26;
+
+  --pink:   #e8748f;
+  --red:    #dd6b63;
+  --blue:   #6f9fd8;
+  --violet: #a584d6;
+  --amber:  #d9a13f;
+  --mint:   #7fb587;
+  --teal:   #5fb3a8;
+  --orange: #e8925a;
+
+  --danger: #dd6b63;
+  --warning: #d9a13f;
+  --ok:      #7fb587;
+
+  --ring-track: rgb(93 64 55 / 12%);
+  --lamp:       rgb(255 250 245 / 55%);
+  --btn-edge:   rgb(93 64 55 / 30%);
+  --danger:     #b93b33;
+
+  --shadow-sm: 0 1px 2px  rgb(93 64 55 / 8%);
+  --shadow-md: 0 4px 16px rgb(93 64 55 / 10%);
+  --shadow-lg: 0 16px 48px rgb(93 64 55 / 16%);
+}
+
+/* ------------------------------------------------------------
+   rose — pinkish, light
+   ------------------------------------------------------------ */
+[data-theme="rose"] {
+  color-scheme: light;
+
+  --bg:             #ffeaf1;
+  --bg-sunken:      #ffe2ea;
+  --surface:        #fffafb;
+  --surface-raised: #fff5f8;
+  --surface-hover:  #ffeff4;
+  --surface-active: #ffe4ec;
+
+  --line:        rgb(92 48 66 / 9%);
+  --line-strong: rgb(92 48 66 / 18%);
+  --line-faint:  rgb(92 48 66 / 5%);
+
+  --ink:        #5c3242;
+  --ink-dim:    #875d6f;   /* was #8c6274 — 4.21:1 on --bg */
+  --ink-faint:  #845f6e;   /* was #b99aa7 — 2.10:1, unreadable */
+  --ink-invert: #fffafb;
+
+  --accent:      #ff9dc4;
+  --accent-wash: rgb(255 157 196 / 32%);
+  --accent-edge: rgb(255 157 196 / 90%);
+  --accent-ink:  #4d2133;
+
+  --pink:   #ef6f9c;
+  --red:    #e0736f;
+  --blue:   #7aa4dd;
+  --violet: #a887dd;
+  --amber:  #dfa64f;
+  --mint:   #83b98c;
+  --teal:   #62b5ad;
+  --orange: #ec9a63;
+
+  --danger: #e0736f;
+  --warning: #dfa64f;
+  --ok:      #83b98c;
+
+  --ring-track: rgb(92 48 66 / 12%);
+  --lamp:       rgb(255 255 255 / 55%);
+  --btn-edge:   rgb(92 48 66 / 30%);
+  --danger:     #c23a5f;
+
+  --shadow-sm: 0 1px 2px  rgb(92 48 66 / 8%);
+  --shadow-md: 0 4px 16px rgb(92 48 66 / 10%);
+  --shadow-lg: 0 16px 48px rgb(92 48 66 / 16%);
+}
+
+/* ------------------------------------------------------------
+   forest — deep greens, study-focused, calm but not sleepy
+   ------------------------------------------------------------ */
+[data-theme="forest"] {
+  color-scheme: dark;
+
+  --bg:             #0d1a12;
+  --bg-sunken:      #0a150e;
+  --surface:        #15251a;
+  --surface-raised: #1a2e21;
+  --surface-hover:  #1f3528;
+  --surface-active: #244030;
+
+  --line:        rgb(180 220 190 / 9%);
+  --line-strong: rgb(180 220 190 / 18%);
+  --line-faint:  rgb(180 220 190 / 5%);
+
+  --ink:        #d4e8d8;
+  --ink-dim:    #9db8a3;
+  --ink-faint:  #8faa95;   /* was #6b8a72 — 2.97:1, unreadable */
+  --ink-invert: #0d1a12;
+
+  --accent:      #6fbf7f;
+  --accent-wash: rgb(111 191 127 / 28%);
+  --accent-edge: rgb(111 191 127 / 90%);
+  --accent-ink:  #0a150e;
+
+  --pink:   #e8748f;
+  --red:    #dd6b63;
+  --blue:   #6f9fd8;
+  --violet: #a584d6;
+  --amber:  #d9a13f;
+  --mint:   #7fb587;
+  --teal:   #5fb3a8;
+  --orange: #e8925a;
+
+  --danger: #dd6b63;
+  --warning: #d9a13f;
+  --ok:      #7fb587;
+
+  --ring-track: rgb(180 220 190 / 12%);
+  --lamp:       rgb(111 191 127 / 8%);
+  --btn-edge:   rgb(180 220 190 / 30%);
+
+  --shadow-sm: 0 1px 2px  rgb(0 0 0 / 20%);
+  --shadow-md: 0 4px 16px rgb(0 0 0 / 25%);
+  --shadow-lg: 0 16px 48px rgb(0 0 0 / 35%);
+}
+
+/* ------------------------------------------------------------
+   slate — lighter dark mode, cool and energizing, not sleepy
+   ------------------------------------------------------------ */
+[data-theme="slate"] {
+  color-scheme: dark;
+
+  --bg:             #1a1f2b;
+  --bg-sunken:      #151a24;
+  --surface:        #232a38;
+  --surface-raised: #2a3342;
+  --surface-hover:  #303a4a;
+  --surface-active: #364254;
+
+  --line:        rgb(180 200 230 / 9%);
+  --line-strong: rgb(180 200 230 / 18%);
+  --line-faint:  rgb(180 200 230 / 5%);
+
+  --ink:        #dde5f0;
+  --ink-dim:    #a0aec0;
+  --ink-faint:  #a2aebc;   /* was #708090 — 2.51:1, unreadable */
+  --ink-invert: #1a1f2b;
+
+  --accent:      #6ea8fe;
+  --accent-wash: rgb(110 168 254 / 28%);
+  --accent-edge: rgb(110 168 254 / 90%);
+  --accent-ink:  #151a24;
+
+  --pink:   #e8748f;
+  --red:    #dd6b63;
+  --blue:   #6f9fd8;
+  --violet: #a584d6;
+  --amber:  #d9a13f;
+  --mint:   #7fb587;
+  --teal:   #5fb3a8;
+  --orange: #e8925a;
+
+  --danger: #dd6b63;
+  --warning: #d9a13f;
+  --ok:      #7fb587;
+
+  --ring-track: rgb(180 200 230 / 12%);
+  --lamp:       rgb(110 168 254 / 8%);
+  --btn-edge:   rgb(180 200 230 / 30%);
+
+  --shadow-sm: 0 1px 2px  rgb(0 0 0 / 20%);
+  --shadow-md: 0 4px 16px rgb(0 0 0 / 25%);
+  --shadow-lg: 0 16px 48px rgb(0 0 0 / 35%);
+}
+
+/* ------------------------------------------------------------
+   light themes: white-on-white focus rings read badly,
+   and the lamp wants to be light rather than warm ember.
+   ------------------------------------------------------------ */
+[data-theme="peach"] :focus-visible,
+[data-theme="rose"] :focus-visible {
+  outline-color: var(--accent);
+}

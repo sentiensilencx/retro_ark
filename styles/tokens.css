@@ -1,0 +1,121 @@
+/* ============================================================
+   ark — design tokens
+   Every colour, size, and timing lives here.
+   This is the one file to edit when the palette changes.
+   ============================================================ */
+
+:root {
+  color-scheme: dark;
+
+  /* ---- surfaces — warm, orange-tinted black ---- */
+  --bg:             #110e0b;
+  --bg-sunken:      #0c0a08;
+  --surface:        #181410;
+  --surface-raised: #201b16;
+  --surface-hover:  #29231d;
+  --surface-active: #332b24;
+
+  /* ---- lines — warm white, never cold grey ---- */
+  --line:        rgb(255 234 214 / 7%);
+  --line-strong: rgb(255 234 214 / 15%);
+  --line-faint:  rgb(255 234 214 / 4%);
+
+  /* ---- ink ---- */
+  --ink:        #f3ede5;
+  --ink-dim:    #aaa197;
+  --ink-faint:  #99928a;   /* was #706860 — 2.54:1 on --surface, unreadable */
+  --ink-invert: #110e0b;
+
+  /* ---- accent — warm clay, the lamp ---- */
+  --accent:      #d98a5f;
+  --accent-wash: rgb(217 138 95 / 15%);
+  --accent-edge: rgb(217 138 95 / 45%);
+  --accent-ink:  #2a1409;
+
+  /* ---- folder colours — cute, but warm-leaning ---- */
+  --pink:   #f2a0b8;
+  --red:    #ef8074;
+
+  /* destructive — darker than --red so white text on it still reads */
+  --danger: #c8443a;
+  --blue:   #93b8e6;
+  --violet: #b8a0e4;
+  --amber:  #e8bc6a;
+  --mint:   #a9cc8e;
+  --teal:   #86c6bd;
+  --orange: #f0a06b;
+
+  /* ---- status ---- */
+  --danger:  #e8837a;
+  --warning: #e8b45f;
+  --ok:      #a9cc8e;
+
+  /* ---- type ---- */
+  --font:      "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --text-xs:  0.75rem;
+  --text-sm:  0.8125rem;
+  --text-md:  0.875rem;
+  --text-lg:  1rem;
+  --text-xl:  1.25rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2.5rem;
+
+  --leading-tight: 1.2;
+  --leading:       1.55;
+
+  --w-normal:   400;
+  --w-medium:   500;
+  --w-semibold: 600;
+
+  /* ---- space — 4px scale ---- */
+  --s-1:  4px;
+  --s-2:  8px;
+  --s-3:  12px;
+  --s-4:  16px;
+  --s-5:  20px;
+  --s-6:  24px;
+  --s-8:  32px;
+  --s-10: 40px;
+  --s-12: 48px;
+  --s-16: 64px;
+  --s-20: 80px;
+
+  /* ---- shape ---- */
+  --r-sm:   6px;
+  --r-md:   10px;
+  --r-lg:   14px;
+  --r-xl:   20px;
+  --r-full: 999px;
+
+  /* ---- elevation — restrained, no glow ---- */
+  --shadow-sm: 0 1px 2px   rgb(0 0 0 / 40%);
+  --shadow-md: 0 4px 16px  rgb(0 0 0 / 45%);
+  --shadow-lg: 0 16px 48px rgb(0 0 0 / 55%);
+
+  /* ---- motion ---- */
+  --ease:     cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 90ms;
+  --dur:      160ms;
+  --dur-slow: 260ms;
+  --stagger:  55ms;   /* gap between rising items */
+
+  /* ---- layout ---- */
+  --sidebar-w:   250px;
+  --topbar-h:    56px;
+  --content-max: 780px;
+  --avatar-size: 32px;
+
+  /* ---- pomodoro ring ---- */
+  --ring-size:   240px;
+  --ring-stroke: 7px;
+  --ring-track:  rgb(255 234 214 / 8%);
+
+  /* ---- the lamp (see .app::before in layout.css) ---- */
+  --lamp: rgb(217 138 95 / 9%);
+
+  /* ---- physical key edge (see styles/tactile.css) ---- */
+  --btn-edge: rgb(0 0 0 / 55%);
+}

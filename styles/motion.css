@@ -1,0 +1,139 @@
+/* ============================================================
+   ark — motion
+   Things rise into place, one after another. No plain fades.
+   ============================================================ */
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes rise-sm {
+  from { opacity: 0; transform: translateY(7px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ------------------------------------------------------------
+   sidebar — rises once, on load, top to bottom
+   ------------------------------------------------------------ */
+.sidebar > * {
+  animation: rise-sm 520ms var(--ease-out) both;
+}
+.sidebar > *:nth-child(1) { animation-delay: 20ms; }
+.sidebar > *:nth-child(2) { animation-delay: 75ms; }
+.sidebar > *:nth-child(3) { animation-delay: 130ms; }
+.sidebar > *:nth-child(4) { animation-delay: 185ms; }
+.sidebar > *:nth-child(5) { animation-delay: 240ms; }
+.sidebar > *:nth-child(6) { animation-delay: 295ms; }
+.sidebar > *:nth-child(7) { animation-delay: 350ms; }
+.sidebar > *:nth-child(8) { animation-delay: 405ms; }
+.sidebar > *:nth-child(9) { animation-delay: 460ms; }
+
+/* ------------------------------------------------------------
+   views — every block rises when the view opens.
+   display:none → block restarts the animation, so this replays
+   naturally each time you switch views.
+   ------------------------------------------------------------ */
+.view.is-active > * {
+  animation: rise 540ms var(--ease-out) both;
+}
+.view.is-active > *:nth-child(1) { animation-delay: 30ms; }
+.view.is-active > *:nth-child(2) { animation-delay: calc(30ms + var(--stagger)); }
+.view.is-active > *:nth-child(3) { animation-delay: calc(30ms + var(--stagger) * 2); }
+.view.is-active > *:nth-child(4) { animation-delay: calc(30ms + var(--stagger) * 3); }
+.view.is-active > *:nth-child(5) { animation-delay: calc(30ms + var(--stagger) * 4); }
+.view.is-active > *:nth-child(n+6) { animation-delay: calc(30ms + var(--stagger) * 5); }
+
+/* deeper rows keep the cascade going */
+.view.is-active .panel > .panel-row {
+  animation: rise-sm 480ms var(--ease-out) both;
+}
+.view.is-active .panel > .panel-row:nth-child(1) { animation-delay: 160ms; }
+.view.is-active .panel > .panel-row:nth-child(2) { animation-delay: calc(160ms + var(--stagger)); }
+.view.is-active .panel > .panel-row:nth-child(3) { animation-delay: calc(160ms + var(--stagger) * 2); }
+.view.is-active .panel > .panel-row:nth-child(4) { animation-delay: calc(160ms + var(--stagger) * 3); }
+.view.is-active .panel > .panel-row:nth-child(n+5) { animation-delay: calc(160ms + var(--stagger) * 4); }
+
+/* grid cards — folder cards, noise cards */
+.view.is-active #folder-grid > *,
+.view.is-active .card-grid > * {
+  animation: rise 520ms var(--ease-out) both;
+}.view.is-active #folder-grid > *:nth-child(6n+1) { animation-delay: 130ms; }
+.view.is-active #folder-grid > *:nth-child(6n+2) { animation-delay: calc(130ms + var(--stagger)); }
+.view.is-active #folder-grid > *:nth-child(6n+3) { animation-delay: calc(130ms + var(--stagger) * 2); }
+.view.is-active #folder-grid > *:nth-child(6n+4) { animation-delay: calc(130ms + var(--stagger) * 3); }
+.view.is-active #folder-grid > *:nth-child(6n+5) { animation-delay: calc(130ms + var(--stagger) * 4); }
+.view.is-active #folder-grid > *:nth-child(6n)   { animation-delay: calc(130ms + var(--stagger) * 5); }
+
+/* task rows — the list cascades in beneath its header */
+.view.is-active .task-list > * {
+  animation: rise-sm 460ms var(--ease-out) both;
+}
+.view.is-active .task-list > *:nth-child(1) { animation-delay: 120ms; }
+.view.is-active .task-list > *:nth-child(2) { animation-delay: calc(120ms + var(--stagger)); }
+.view.is-active .task-list > *:nth-child(3) { animation-delay: calc(120ms + var(--stagger) * 2); }
+.view.is-active .task-list > *:nth-child(4) { animation-delay: calc(120ms + var(--stagger) * 3); }
+.view.is-active .task-list > *:nth-child(5) { animation-delay: calc(120ms + var(--stagger) * 4); }
+.view.is-active .task-list > *:nth-child(n+6) { animation-delay: calc(120ms + var(--stagger) * 5); }
+
+/* ------------------------------------------------------------
+   topbar
+   ------------------------------------------------------------ */
+.topbar { animation: rise-sm 460ms var(--ease-out) both; }
+
+/* ------------------------------------------------------------
+   command palette — items drop in behind the input
+   ------------------------------------------------------------ */
+.palette-item {
+  animation: rise-sm 300ms var(--ease-out) both;
+}
+.palette-item:nth-child(1) { animation-delay: 40ms; }
+.palette-item:nth-child(2) { animation-delay: 75ms; }
+.palette-item:nth-child(3) { animation-delay: 110ms; }
+.palette-item:nth-child(4) { animation-delay: 145ms; }
+.palette-item:nth-child(5) { animation-delay: 180ms; }
+.palette-item:nth-child(n+6) { animation-delay: 215ms; }
+
+/* ------------------------------------------------------------
+   hover micro-motion — things sit up slightly when touched
+   ------------------------------------------------------------ */
+.folder-card {
+  transition: transform var(--dur) var(--ease),
+              background var(--dur-fast) var(--ease),
+              border-color var(--dur-fast) var(--ease);
+}
+.folder-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--line-strong);
+}
+.folder-card:active { transform: translateY(0); }
+
+.nav-item {
+  transition: background var(--dur-fast) var(--ease),
+              color var(--dur-fast) var(--ease),
+              transform var(--dur-fast) var(--ease);
+}
+.nav-item:active { transform: translateX(1px); }
+
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+/* ------------------------------------------------------------
+   reduced motion
+   ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  .sidebar > *,
+  .view.is-active > *,
+  .view.is-active .panel > .panel-row,
+  .view.is-active #folder-grid > *,
+  .view.is-active .card-grid > *,
+  .view.is-active .task-list > *,
+  .topbar,
+  .palette-item {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .folder-card:hover, .btn:hover, .nav-item:active { transform: none; }
+  .modal, .ctx-menu, .palette-item { animation: none !important; }
+}
